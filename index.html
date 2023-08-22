@@ -1,14 +1,91 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id=""></div>
-    
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+</head>
+<body>
+
+  <div><!-- Calculadora Simple -->
+    <h3>Calculadora simple</h3>
+    <form id="calcularForm" action="submit">
+      <label for="">primer numero:</label>
+      <input id="num1Calcu" type="number">
+      <label for="">segundo numero:</label>
+      <input id="num2Calcu" type="number">
+      <select name="" id="selectCalcu">
+        <option value="0" hidden>operacion</option>
+        <option value="1">sumar</option>
+        <option value="2">restar</option>
+        <option value="3">mmultiplicar</option>
+        <option value="4">dividir</option>
+      </select>
+      <button type="submit">calcular</button>
+    </form>
+    <p id="resultadoCalcu">aca pasa algo</p>
+  </div>
+
+  <div><!-- Contar Pares e Impares -->
+    <h3>Contar Pares e Impares</h3>
+    <form id="formParesImpares" action="submit">
+      <label for="">Rango minimo</label>
+      <input type="number" id="minParesImpares">
+      <label for="">Rango maximo</label>
+      <input type="number" id="maxParesImpares">
+      <button type="submit">Contar</button>
+    </form>
+    <p id="resultadoParesImpares">Aca pasa otra cosa</p>
+  </div>
+
+  <div><!-- Tabla de Multiplicar -->
+    <h3>Tabla de Multiplicar</h3>
+    <form action="submit" id="formTabla">
+      <label for="">elija el numero del cual quiere generar la tabla</label>
+      <input type="number" id="numTabla">
+      <button type="submit">mostrar Tabla</button>
+    </form>
+    <table id="resultadoTabla">aca va algo</table>
+  </div>
+
+  <div><!-- Fibonacci -->
+    <h3>Fibonacci</h3>
+    <form action="submit" id="formFibo">
+      <label for="">cantidad de digitos a mostrar de la secuencia</label>
+      <input type="number" id="numFibo">
+      <button type="submit">mostrar secuencia</button>
+    </form>
+    <p id="resultadoFibo">Podria ser la secuencia de fibonacci?</p>
+  </div>
+
+  <div><!-- convertidor de Temperatura -->
+    <h3>Convertidor de Temperatura</h3>
+    <form action="submit" id="formGrados">
+      <label for="">cantidad de grados a convertir</label>
+      <input type="number" id="numGrados">
+      <select name="" id="selectGrados">
+        <option value="0">Seleccionar</option>
+        <option value="1">Celsius</option>
+        <option value="2">Fahrenheit</option>
+      </select>
+      <button type="submit">convertir</button>
+    </form>
+    <p id="resultadoGrados"></p>
+  </div>
+
+  <div><!-- Contador de Palabras -->
+    <h3>Contador de Palabras</h3>
+    <form action="submit" id="formPalabra">
+      <label for="">inserte una oracion para contar las palabras</label>
+      <input type="text" id="textoPalabra">
+      <button type="submit">Contar</button>
+    </form>
+    <p id="resultadoPalabra"></p>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
