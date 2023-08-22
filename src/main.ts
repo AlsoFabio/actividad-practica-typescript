@@ -1,124 +1,84 @@
-console.log("----------------------------------------------------------------");
+import { calcular, paresInpares, tablaMultiplicar, fibonacci, convertidorTemperatura, contadorPalabras } from "./funciones";
 
-console.log("Calculadora simple");
+document.addEventListener("DOMContentLoaded", () => {//Calculadora simple
+    const form = document.getElementById("calcularForm") as HTMLFormElement;
+    const num1Input = document.getElementById("num1Calcu") as HTMLInputElement;
+    const num2Input = document.getElementById("num2Calcu") as HTMLInputElement;
+    const selectInput = document.getElementById("selectCalcu") as HTMLSelectElement;
+    const resultadoCalcu = document.getElementById("resultadoCalcu") as HTMLParagraphElement;
 
+    form.addEventListener("submit", (e: Event) => {
+        e.preventDefault();
+        const num1 = parseInt(num1Input.value);
+        const num2 = parseInt(num2Input.value);
+        const simbol = selectInput.value;
 
-const calcular = (num1: number, num2: number, simbol: string) => {
+        resultadoCalcu.innerText = calcular(num1, num2, simbol).toString();
+    });
+});
 
-  let resultado: any;
+document.addEventListener("DOMContentLoaded", () => {//Contador Pares Impares
+    const form = document.getElementById("formParesImpares") as HTMLFormElement;
+    const min = document.getElementById("minParesImpares") as HTMLInputElement;
+    const max = document.getElementById("maxParesImpares") as HTMLInputElement;
+    const resultadoParesImpares = document.getElementById("resultadoParesImpares") as HTMLParagraphElement;
 
-  if (simbol === "+") {
-    resultado = num1 + num2
-  }
-  if (simbol === "-") {
-    resultado = num1 - num2
-  }
-  if (simbol === "*") {
-    resultado = num1 * num2
-  }
-  if (simbol === "/") {
-    resultado = num1 / num2
-  }
-  return console.log(`${num1} ${simbol} ${num2} = ${resultado}`);
-  
-}
+    form.addEventListener("submit", (e: Event) => {
+        e.preventDefault();
+        const minimo = parseInt(min.value);
+        const maximo = parseInt(max.value);
 
-console.log(calcular(10, 20, '+'));
+        resultadoParesImpares.innerText = paresInpares(minimo, maximo).toString();
+    });
+});
 
-console.log("----------------------------------------------------------------");
+document.addEventListener("DOMContentLoaded", () => {//Tabla de Multiplicar
+    const form = document.getElementById("formTabla") as HTMLFormElement;
+    const numero = document.getElementById("numTabla") as HTMLInputElement;
+    const resultado = document.getElementById("resultadoTabla") as HTMLParagraphElement;
 
-console.log("Contador de números pares e inpares");
+    form.addEventListener("submit", (e: Event) => {
+        e.preventDefault();
+        const num = parseInt(numero.value);
 
-const paresInpares = (min: number, max: number) => {
-  let pares: number = 0;
-  let inpares: number = 0;
+        resultado.innerHTML = tablaMultiplicar(num);
+    });
+});
 
-  for (let i = min; i <= max; i++) {
-    if (i % 2 === 0) {
-      pares++;
-    }
-    else {
-      inpares++;
-    }
-  }
-  console.log(`entre el rango ${min} y ${max} hay ${pares} números pares y ${inpares} números inpares`);
-  return
-}
-    //rangos a elección
-let rangoMin:number = 10;
-let rangoMax:number = 20;
+document.addEventListener("DOMContentLoaded", () => {//Fibonacci
+    const form = document.getElementById("formFibo") as HTMLFormElement;
+    const numero = document.getElementById("numFibo") as HTMLInputElement;
+    const resultado = document.getElementById("resultadoFibo") as HTMLParagraphElement;
 
-console.log(paresInpares(rangoMin, rangoMax));
+    form.addEventListener("submit", (e: Event) => {
+        e.preventDefault();
+        const num = parseInt(numero.value);
+        resultado.innerText = fibonacci(num);
+    });
+});
 
-console.log("----------------------------------------------------------------");
+document.addEventListener("DOMContentLoaded", () => {//Convertidor
+    const form = document.getElementById("formGrados") as HTMLFormElement;
+    const numero = document.getElementById("numGrados") as HTMLInputElement;
+    const select = document.getElementById("selectGrados") as HTMLSelectElement;
+    const resultado = document.getElementById("resultadoGrados") as HTMLParagraphElement;
 
-console.log("Tabla de multiplicar");
+    form.addEventListener("submit", (e: Event) => {
+        e.preventDefault();
+        const num = parseInt(numero.value);
+        const grados = parseInt(select.value);
+        resultado.innerText = convertidorTemperatura(num, grados).toString();
+    });
+});
 
-const tablaMultiplicar = (num: number) => {
+document.addEventListener("DOMContentLoaded", () => {//Contador de Palabras
+    const form = document.getElementById("formPalabra") as HTMLFormElement;
+    const texto = document.getElementById("textoPalabra") as HTMLInputElement;
+    const resultado = document.getElementById("resultadoPalabra") as HTMLParagraphElement;
 
-  for (let i = 1; i <= 10; i++) {
-    console.log(`${num} x ${i} = ${num * i}`);
-  }
-}
-
-let numTabla:number= 7;//elija el numero del cual quiere generar la tabla
-
-console.log(tablaMultiplicar(numTabla));
-
-console.log("----------------------------------------------------------------");
-
-console.log("Fibonacci");
-
-const fibonacci = (num: number) => {
-  let array = [];
-
-  if (num >= 1) {
-    array.push(0);
-  }
-  if (num >= 2) {
-    array.push(1);
-  }
-
-  for (let i = 2; i < num; i++) {
-    array.push(array[i - 1] + array[i - 2]);
-  }
-
-  console.log(array.join('').slice(0, num));
-}
-  let N:number = 12; //modifique al valor deseado
-fibonacci(N);
-
-console.log("----------------------------------------------------------------");
-
-console.log("Convertidor de temperaturas");
-
-const convertidorTemperatura = (num: number, grado: string) => {
-  if (grado === 'Celsius') {
-    return console.log((num - 32) * (5 / 9));
-
-  }
-  if (grado === 'Fahrenheit') {
-    return console.log((num * (9 / 5)) + 32);
-  }
-}
-
-let grados: number = 0;//eliga los grado a eleccion
-let temperatura: string = "Fahrenheit";// eliga entre los grados "Celsius" ö los "Fahrenheit"
-
-convertidorTemperatura(grados, temperatura);
-
-console.log("----------------------------------------------------------------");
-
-console.log("Contador de palabras");
-
-const contadorPalabras = (oracion: string) => {
-
-  const expreg = oracion.replace(/[^\w\s]/g, "");
-  const arreglo = expreg.split(/\s+/);
-  console.log(arreglo);
-
-  console.log(`Tú oración tiene ${arreglo.length} palabras`);
-}
-const oracion: string = "Hola. Alguna vez nos hemos vimos antes?";//introduce tu oración
-
-contadorPalabras(oracion);
+    form.addEventListener("submit", (e: Event) => {
+        e.preventDefault();
+        const palabra = texto.value;
+        resultado.innerText = contadorPalabras(palabra);
+    });
+});
