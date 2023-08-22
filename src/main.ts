@@ -1,4 +1,11 @@
-import { calcular, paresInpares, tablaMultiplicar, fibonacci, convertidorTemperatura, contadorPalabras } from "./funciones";
+import {
+    calcular,
+    paresInpares,
+    tablaMultiplicar,
+    fibonacci,
+    convertidorTemperatura,
+    contadorPalabras
+} from "./funciones";
 
 document.addEventListener("DOMContentLoaded", () => {//Calculadora simple
     const form = document.getElementById("calcularForm") as HTMLFormElement;

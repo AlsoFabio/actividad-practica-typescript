@@ -82,6 +82,10 @@ export const convertidorTemperatura = (num: number, grado: number): string => {
 
 export const contadorPalabras = (oracion: string): string => {
   let resultado: string = "";
+  if (oracion === ""){
+    resultado = `Tú oración no tiene palabras`;
+    return resultado
+  }
   const expreg = oracion.replace(/[^\w\s]/g, "");
   const arreglo = expreg.split(/\s+/);
 
